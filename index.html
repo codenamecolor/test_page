@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>파란피 | 2030 여성 삼성 라이온즈 동호회</title>
+    <!-- 폰트 적용 (Pretendard) -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/variable/pretendardvariable.css" />
+    <style>
+        /* 알록달록하고 발랄한 블루 팔레트 */
+        :root {
+            --vibrant-blue: #007AFF; /* 메인 블루 */
+            --royal-blue: #0047BB;   /* 강조 블루 */
+            --sky-blue: #70B9FF;     /* 밝은 스카이 블루 */
+            --light-blue: #E8F3FF;   /* 공식 행사 배경 */
+            --weekday-blue: #F5F9FF; /* 평일 경기 (연한 하늘색) */
+            
+            --bg-white: #FFFFFF;
+            --text-dark: #1D1D1F;
+            --text-sub: #48484A;
+            --border-soft: #D1E5FF;
+            
+            --transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { 
+            font-family: 'Pretendard Variable', sans-serif; 
+            background-color: var(--bg-white); 
+            color: var(--text-dark); 
+            line-height: 1.5; 
+            word-break: keep-all;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* 애니메이션 */
+        .fade-in { opacity: 0; transform: translateY(20px); transition: var(--transition); }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* 공통 버튼 */
+        .btn-main {
+            background: linear-gradient(135deg, var(--vibrant-blue), var(--royal-blue));
+            color: var(--bg-white);
+            padding: 18px 45px; border-radius: 50px; font-size: 1.1rem; font-weight: 800;
+            display: inline-block; transition: var(--transition);
+            border: none; cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0, 122, 255, 0.25);
+        }
+        .btn-main:hover { 
+            transform: scale(1.05) translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 122, 255, 0.35);
+        }
+
+        /* 1. GNB */
+        header {
+            position: fixed; top: 0; width: 100%; background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 16px 5%; z-index: 1000; border-bottom: 1px solid var(--border-soft);
+        }
+        .logo { font-size: 1.5rem; font-weight: 900; color: var(--vibrant-blue); letter-spacing: -1px; }
+        .nav-links { display: flex; gap: 30px; font-weight: 700; font-size: 0.95rem; }
+        .nav-links li a:hover { color: var(--vibrant-blue); }
+        .btn-nav {
+            background-color: var(--vibrant-blue); color: var(--bg-white);
+            padding: 9px 20px; border-radius: 30px; font-weight: 800; font-size: 0.85rem;
+        }
+
+        /* 2. Hero Section */
+        .hero {
+            text-align: center; padding: 180px 5% 120px;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(0, 122, 255, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(112, 185, 255, 0.1) 0%, transparent 40%);
+        }
+        .hero-tag {
+            display: inline-block; background-color: var(--light-blue); color: var(--vibrant-blue);
+            padding: 6px 16px; border-radius: 50px; font-weight: 800; font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+        .hero h1 { font-size: 3.8rem; font-weight: 900; margin-bottom: 24px; line-height: 1.2; letter-spacing: -2px;}
+        .hero h1 span { 
+            background: linear-gradient(to right, var(--vibrant-blue), var(--sky-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero p { font-size: 1.25rem; color: var(--text-sub); margin-bottom: 48px; font-weight: 600;}
+
+        /* 섹션 공통 */
+        section { padding: 100px 5%; }
+        .section-title { text-align: center; font-size: 2.5rem; font-weight: 900; margin-bottom: 50px; letter-spacing: -1px; }
+
+        /* 3. Hook Section */
+        .hook { background-color: var(--light-blue); border-radius: 50px; margin: 0 20px; text-align: center; }
+        .checklist { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; max-width: 1000px; margin: 0 auto; }
+        .checklist li { 
+            background: var(--bg-white); padding: 20px 30px; border-radius: 20px;
+            font-size: 1.1rem; font-weight: 800; color: var(--vibrant-blue);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03); transition: var(--transition);
+        }
+        .checklist li:hover { transform: scale(1.05); }
+
+        /* 4. Core Activities (2x2 고정) */
+        .grid-activities {
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 25px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .act-card {
+            padding: 40px 30px; border-radius: 30px; background: var(--bg-white);
+            border: 2px solid var(--light-blue); transition: var(--transition);
+            text-align: center;
+        }
+        .act-card:hover { 
+            background: var(--light-blue); border-color: var(--vibrant-blue);
+            transform: translateY(-8px);
+        }
+        .act-icon { font-size: 3rem; margin-bottom: 20px; display: block; }
+        .act-card h3 { font-size: 1.4rem; margin-bottom: 12px; font-weight: 800; }
+        .act-card p { color: var(--text-sub); font-size: 1rem; font-weight: 500; }
+
+        /* 5. Seminar Topics (디자인 롤백) */
+        .seminar { max-width: 900px; margin: 0 auto; }
+        .topic-list { display: flex; flex-direction: column; gap: 16px; margin-top: 40px; }
+        .topic-list li {
+            padding: 24px 32px; background-color: var(--bg-white); border-radius: 24px;
+            font-size: 1.15rem; font-weight: 800; box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+            display: flex; align-items: center; gap: 16px; transition: var(--transition);
+            border: 2px solid var(--light-blue);
+        }
+        .topic-list li:hover { 
+            box-shadow: 0 8px 24px rgba(49, 130, 246, 0.12); 
+            transform: translateX(10px); 
+            border-color: var(--vibrant-blue); 
+            background-color: var(--light-blue); 
+        }
+        .topic-list span { 
+            background: var(--vibrant-blue); color: var(--bg-white); 
+            padding: 6px 16px; border-radius: 12px; font-size: 0.95rem; font-weight: 900;
+            white-space: nowrap;
+        }
+
+        /* 6. Schedule (월요일 시작 & 텍스트 확대) */
+        .calendar-wrap {
+            background: var(--light-blue); border-radius: 40px; padding: 40px;
+        }
+        .grid-calendar { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; }
+        .day-header { text-align: center; padding: 10px; font-weight: 900; color: var(--vibrant-blue); opacity: 0.5; }
+        .day-cell {
+            min-height: 125px; background: var(--bg-white); border-radius: 15px; padding: 10px;
+            display: flex; flex-direction: column; justify-content: flex-start; transition: var(--transition);
+            position: relative;
+        }
+        .day-cell.weekday-game { background-color: var(--weekday-blue); } 
+        .day-cell.active:hover { transform: scale(1.03); box-shadow: 0 10px 20px rgba(0,0,0,0.05); z-index: 5; }
+        
+        .date { font-weight: 900; font-size: 1.15rem; margin-bottom: 8px; }
+        .date.sun { color: #FF3B30; }
+        .date.sat { color: var(--vibrant-blue); }
+        
+        .badge { font-size: 0.85rem; font-weight: 900; padding: 6px 0; border-radius: 8px; text-align: center; margin-bottom: 6px; }
+        .badge.home { background: var(--vibrant-blue); color: var(--bg-white); }
+        .badge.away { background: var(--sky-blue); color: var(--bg-white); }
+        .badge.weekday { background: #E1EEFF; color: var(--royal-blue); border: 1px solid var(--border-soft); }
+        
+        .event-mark { 
+            font-size: 0.85rem; color: var(--royal-blue); font-weight: 900; 
+            text-align: center; margin-top: auto; padding: 6px; 
+            background: rgba(255,255,255,0.9); border-radius: 8px;
+            border: 1px solid var(--border-soft);
+        }
+
+        /* 7. FAQ (이전 버전 롤백) */
+        .faq-list { max-width: 800px; margin: 0 auto; }
+        details { background: var(--light-blue); border-radius: 20px; margin-bottom: 12px; transition: var(--transition); }
+        details[open] { background: var(--bg-white); border: 2px solid var(--vibrant-blue); }
+        summary { padding: 22px 30px; font-weight: 800; font-size: 1.15rem; cursor: pointer; list-style: none; position: relative; }
+        summary::after {
+            content: '+'; position: absolute; right: 30px; top: 50%; transform: translateY(-50%);
+            font-size: 1.5rem; color: var(--vibrant-blue); transition: var(--transition);
+        }
+        details[open] summary::after { transform: translateY(-50%) rotate(45deg); }
+        details p { padding: 0 30px 22px; color: var(--text-sub); font-weight: 600; font-size: 1rem; line-height: 1.8; }
+
+        /* 8. Footer */
+        footer {
+            background: linear-gradient(180deg, var(--bg-white) 0%, var(--light-blue) 100%);
+            padding: 120px 5% 60px; text-align: center;
+        }
+        footer h2 { font-size: 2.8rem; font-weight: 900; margin-bottom: 40px; letter-spacing: -1.5px; }
+        .footer-info { margin-top: 60px; color: var(--text-sub); font-weight: 700; font-size: 0.9rem; }
+
+        /* 모바일 대응 */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .grid-activities { gap: 15px; } 
+            .act-card { padding: 25px 15px; }
+            .calendar-wrap { padding: 15px; border-radius: 25px; }
+            .grid-calendar { gap: 4px; }
+            .day-cell { padding: 4px; border-radius: 8px; min-height: 110px; }
+            .date { font-size: 0.9rem; }
+            .badge { font-size: 0.65rem; padding: 2px 0; }
+            .event-mark { font-size: 0.6rem; padding: 2px; }
+            .topic-list li { padding: 16px 20px; font-size: 1rem; flex-direction: column; align-items: flex-start; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">파란피⚾</div>
+        <ul class="nav-links">
+            <li><a href="#activities">활동</a></li>
+            <li><a href="#seminar">세미나</a></li>
+            <li><a href="#calendar">일정</a></li>
+            <li><a href="#faq">FAQ</a></li>
+        </ul>
+        <a href="https://docs.google.com/forms/d/1IZ4GMoxin0St3LerBezsaaA8pVrfUt5WF_Npe4gXcjw/viewform" target="_blank" class="btn-nav">가입 신청</a>
+    </header>
+
+    <section class="hero">
+        <div class="hero-tag">SAMSUNG LIONS FAN CLUB</div>
+        <h1>야구, 보는 것보다<br><span>10배 더 재밌게!</span></h1>
+        <p>삼성 라이온즈를 사랑하는 우리들의 딥다이브 직관 동호회</p>
+        <a href="https://docs.google.com/forms/d/1IZ4GMoxin0St3LerBezsaaA8pVrfUt5WF_Npe4gXcjw/viewform" target="_blank" class="btn-main">파란피와 함께하기</a>
+    </section>
+
+    <section id="hook" class="hook">
+        <h2 class="section-title">혹시 이런 갈증 없었나요?</h2>
+        <ul class="checklist">
+            <li class="fade-in">밤새 야구 이야기 나눌 친구가 필요해</li>
+            <li class="fade-in">데이터로 보는 스마트한 야구가 궁금해</li>
+            <li class="fade-in">치열한 티켓팅, 같이 뚫으면 좋겠어</li>
+            <li class="fade-in">직접 배팅장에 가서 공도 쳐보고 싶어</li>
+        </ul>
+        <div class="hook-solution" style="margin-top: 40px; font-weight: 800; color: var(--royal-blue);">이 모든 즐거움, [파란피]에 다 있어요! 💙</div>
+    </section>
+
+    <section id="activities" class="activities">
+        <h2 class="section-title">우리는 이렇게 놀아요</h2>
+        <div class="grid-activities">
+            <div class="act-card fade-in">
+                <span class="act-icon">🎫</span>
+                <h3>티켓 품앗이</h3>
+                <p>좋은 자리를 위해 다 같이 티켓팅! 끈끈한 전우애로 연석을 확보합니다.</p>
+            </div>
+            <div class="act-card fade-in">
+                <span class="act-icon">📊</span>
+                <h3>전력 분석</h3>
+                <p>단순한 응원을 넘어, 경기 지표를 보며 오늘의 승부처를 복기합니다.</p>
+            </div>
+            <div class="act-card fade-in">
+                <span class="act-icon">📚</span>
+                <h3>꿀잼 세미나</h3>
+                <p>비시즌에도 멈추지 않는 덕질! 야구 지식을 나누며 레벨업 합니다.</p>
+            </div>
+            <div class="act-card fade-in">
+                <span class="act-icon">⚾</span>
+                <h3>야구 체험</h3>
+                <p>머리로 배운 야구를 몸으로! 배팅장이나 원데이 클래스로 직접 느껴봅니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="seminar" class="seminar">
+        <h2 class="section-title">함께 공부하는 주제들</h2>
+        <ul class="topic-list">
+            <li class="fade-in"><span>투수편</span> 트래킹 데이터를 통해 본 라이온즈 불펜진의 구종 가치 변화</li>
+            <li class="fade-in"><span>타자편</span> KBO 스트라이크 존 변화에 따른 타자들의 어퍼스윙 트렌드 분석</li>
+            <li class="fade-in"><span>전략편</span> FA 영입 시뮬레이션: 우리 팀 샐러리캡, 어떻게 효율적으로 써야 할까?</li>
+            <li class="fade-in"><span>규칙편</span> 야린이도 100% 이해하는 인필드 플라이와 보크 규정 정복</li>
+        </ul>
+    </section>
+
+    <section id="calendar" class="calendar-section">
+        <h2 class="section-title">2026년 5월 사자들의 일정</h2>
+        <div class="calendar-wrap fade-in">
+            <div class="grid-calendar">
+                <div class="day-header">MON</div><div class="day-header">TUE</div><div class="day-header">WED</div><div class="day-header">THU</div><div class="day-header">FRI</div><div class="day-header">SAT</div><div class="day-header">SUN</div>
+                
+                <div class="day-cell"></div><div class="day-cell"></div><div class="day-cell"></div><div class="day-cell"></div>
+                
+                <div class="day-cell active weekday-game"><span class="date">1</span><div class="badge weekday">vs 한화(A)</div></div>
+                <div class="day-cell active"><span class="date sat">2</span><div class="badge away">vs 한화(A)</div><div class="event-mark">경기 분석 🦁</div></div>
+                <div class="day-cell active"><span class="date sun">3</span><div class="badge away">vs 한화(A)</div><div class="event-mark">직관 모임 🦁</div></div>
+                
+                <div class="day-cell"><span class="date">4</span></div>
+                <div class="day-cell active weekday-game"><span class="date">5</span><div class="badge weekday">vs 키움(H)</div></div>
+                <div class="day-cell active weekday-game"><span class="date">6</span><div class="badge weekday">vs 키움(H)</div></div>
+                <div class="day-cell active weekday-game"><span class="date">7</span><div class="badge weekday">vs 키움(H)</div></div>
+                <div class="day-cell active weekday-game"><span class="date">8</span><div class="badge weekday">vs NC(A)</div></div>
+                <div class="day-cell active"><span class="date sat">9</span><div class="badge away">vs NC(A)</div><div class="event-mark">지식 세미나 🦁</div></div>
+                <div class="day-cell active"><span class="date sun">10</span><div class="badge away">vs NC(A)</div><div class="event-mark">리뷰 스터디 🦁</div></div>
+                
+                <div class="day-cell"><span class="date">11</span></div>
+                <div class="day-cell active weekday-game"><span class="date">12</span><div class="badge weekday">vs LG(A)</div></div>
+                <div class="day-cell active weekday-game"><span class="date">13</span><div class="badge weekday">vs LG(A)</div></div>
+                <div class="day-cell active weekday-game"><span class="date">14</span><div class="badge weekday">vs LG(A)</div></div>
+                <div class="day-cell active weekday-game"><span class="date">15</span><div class="badge weekday">vs KIA(H)</div></div>
+                <div class="day-cell active"><span class="date sat">16</span><div class="badge home">vs KIA(H)</div><div class="event-mark">직관 모임 🦁</div></div>
+                <div class="day-cell active"><span class="date sun">17</span><div class="badge home">vs KIA(H)</div><div class="event-mark">분석 파티 🦁</div></div>
+                
+                <div class="day-cell"><span class="date">18</span></div>
+                <div class="day-cell active weekday-game"><span class="date">19</span><div class="badge weekday">vs KT(H)</div></div>
+                <div class="day-cell active weekday-game"><span class="date">20</span><div class="badge weekday">vs KT(H)</div></div>
+                <div class="day-cell active weekday-game"><span class="date">21</span><div class="badge weekday">vs KT(H)</div></div>
+                <div class="day-cell active weekday-game"><span class="date">22</span><div class="badge weekday">vs 롯데(A)</div></div>
+                <div class="day-cell active"><span class="date sat">23</span><div class="badge away">vs 롯데(A)</div><div class="event-mark">스킬 세미나 🦁</div></div>
+                <div class="day-cell active"><span class="date sun">24</span><div class="badge away">vs 롯데(A)</div><div class="event-mark">리뷰 스터디 🦁</div></div>
+                
+                <div class="day-cell"><span class="date">25</span></div>
+                <div class="day-cell active weekday-game"><span class="date">26</span><div class="badge away">vs SSG(A)</div></div>
+                <div class="day-cell active weekday-game"><span class="date">27</span><div class="badge away">vs SSG(A)</div></div>
+                <div class="day-cell active weekday-game"><span class="date">28</span><div class="badge away">vs SSG(A)</div></div>
+                <div class="day-cell active weekday-game"><span class="date">29</span><div class="badge weekday">vs 두산(H)</div></div>
+                <div class="day-cell active"><span class="date sat">30</span><div class="badge home">vs 두산(H)</div><div class="event-mark">직관 모임 🦁</div></div>
+                <div class="day-cell active"><span class="date sun">31</span><div class="badge home">vs 두산(H)</div><div class="event-mark">시즌 리뷰 🦁</div></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="faq">
+        <h2 class="section-title">궁금한 게 있나요?</h2>
+        <div class="faq-list">
+            <details>
+                <summary>야구 룰을 잘 모르는 '야린이'도 가입할 수 있나요?</summary>
+                <p>물론입니다! 처음부터 세이버메트릭스를 아는 사람은 없습니다. 스터디와 방학 세미나를 통해 함께 기본 룰부터 데이터 분석까지 차근차근 배워나갈 수 있습니다. 배울 열정만 가져오세요!</p>
+            </details>
+            <details>
+                <summary>매주 주말 경기를 다 참석해야 하나요?</summary>
+                <p>아닙니다. 개인 스케줄에 맞춰 참석 가능한 직관 일정과 스터디만 유동적으로 선택해서 참여하시면 됩니다. 강제 참석의 부담은 없습니다.</p>
+            </details>
+            <details>
+                <summary>실전 야구 체험은 체력이 많이 필요한가요?</summary>
+                <p>초보자도 다치지 않고 안전하게 즐길 수 있는 수준으로 진행됩니다. 전문 코치의 안전한 원데이 클래스나 가벼운 배팅 연습 위주이므로, 체력적인 부담 없이 야구의 원리를 몸으로 느껴볼 수 있습니다.</p>
+            </details>
+            <details>
+                <summary>가입 절차는 어떻게 되나요?</summary>
+                <p>하단의 '가입 신청서 작성' 버튼을 통해 폼을 제출해 주시면, 운영진이 내용을 검토한 후 개별적으로 연락을 드려 이후 일정을 안내해 드립니다.</p>
+            </details>
+        </div>
+    </section>
+
+    <footer>
+        <h2>혈관에 흐르는 파란 피,<br>이제 같이 즐겨요!</h2>
+        <a href="https://docs.google.com/forms/d/1IZ4GMoxin0St3LerBezsaaA8pVrfUt5WF_Npe4gXcjw/viewform" target="_blank" class="btn-main">1기 입회 신청서 작성하기</a>
+        <div class="footer-info">
+            <p>blueblood_official@paranpi.kr | Instagram @blueblood_2030</p>
+            <p>© 2026 Blue Blood Study Group. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 스크롤 시 페이드인 효과
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
